@@ -7,7 +7,9 @@ import shutil
 
 # Static Variables
 
-_atlas_t1_path = "tissue_reconstruction/data/sub-mni152_t1-inside-brain_space-sri.nii.gz"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+_atlas_t1_path = os.path.join(current_dir, "data", "sub-mni152_t1-inside-brain_space-sri.nii.gz")
 
 _atlas_tissue_segmentation_path = "tissue_reconstruction/data/sub-mni152_tissue-with-antsN4_space-sri.nii.gz"
 _atlas_wm_pMap_path = "tissue_reconstruction/data/sub-mni152_tissue-with-antsN4_wm_space-sri.nii.gz"
@@ -72,14 +74,24 @@ def reconstruct_pre_tumor_tissue(patient_scan, transform_DTI=False, transform_ti
     # Inputs
     #   - patient_scan: MRI scan of patient with tumor as an ants_Images
     #   - transform_DTI: If true the atlas fiber tracts are also transformed in to the patients anatomy
-    #   - transform
-    #   - verbose: .... TODO
-    # 
+    #   - transform_tissue_segementation: If true the atlas tissue segmentation 
+    #                                       and probability maps for the tissue types are transformed in to the patients anatomy 
+    #   - verbose: .... 
+    #
     # Output
-    #   - dict of the results
-    #       t1 -> t1 scan with reconstructed tissue
-    #       transformation -> tuple paths to affine and deformable transformation    
-    #       TODO
+    #   - dict of the results containing the following
+    #     Always:
+    #       "T1" -> The Transformed T1 atlas (The generated reconstructed )
+    #       "Transformation" -> Path to the Transformations created during the registration (Affine and Warp)
+    #     When transform_DTI was set to true:
+    #       - "fiber_tracts_FA" -> A scalar image of the patients fiber tracts
+    #       - "fiber_tracts_tensor" -> A tensor image of the patients fiber tractations
+    #     When transform_tissue_segmentation was set to true.
+    #       - "TS" -> The tissue segmenation into WM, GM and CSF
+    #       - "WM" -> The probability map for WM 
+    #       - "GM" -> The probability map for GM
+    #       - "CSF" -> The probability map fpr CSF 
+    #
     #====================================================================================================
     if verbose:
         print("To be or not to be ~Shakespear")
