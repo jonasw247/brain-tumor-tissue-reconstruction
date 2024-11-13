@@ -43,12 +43,16 @@ def register_atlas(fixed_image, atlas):
     return transformed_patient, transform_paths
 
 
-def transform_scalar_img(fixed_image, atlas_modality, fwd_transform_paths):
+def transform_scalar_img(fixed_image, atlas_modality, fwd_transform_paths, discrete=True):
+    if discrete:
+        interp = "nearestNeighbor"
+    else: 
+        interp = ""
 
     transformed_image = ants.apply_transforms(fixed=fixed_image,   
                                             moving=atlas_modality, 
                                             transformlist=fwd_transform_paths,
-                                            interpolator='nearestNeighbor')
+                                            interpolator=interp)
 
     return transformed_image
 
