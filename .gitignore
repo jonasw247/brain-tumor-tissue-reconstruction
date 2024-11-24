@@ -1,3 +1,5 @@
 /.venv/
 /outputs/
 /out/*
+/__pycache__/
+/tissue_reconstruction/__pycache__
