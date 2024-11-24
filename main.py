@@ -3,10 +3,6 @@ import ants
 import os
 from tissue_reconstruction import tissue_reconstruction
 
-import sys
-
-print(sys.path)
-
 parser = argparse.ArgumentParser()
 parser.add_argument('patient', help='path to the MRI patient scan with a tumor.\n In nifti file format and registered into SRI space')
 parser.add_argument('output', help='Output Folder to which the results will be saved')

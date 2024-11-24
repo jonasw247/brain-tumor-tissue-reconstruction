@@ -13,6 +13,7 @@ Reconstructing a **pre-tumor** brain state via atlas registration
  You must provide the **path to the 3D MRI Scan** to be reconstructed and the path to the **folder where output should be stored**. 
 
  4. (optional) Specify flags to add other modalities in the output
+ 5. For transforming DTI images functions are needed, that are not yet supported in antspyx. The script currently used functions from ANTs. To use this functionality [ANTs](https://github.com/ANTsX/ANTs/wiki/Compiling-ANTs-on-Linux-and-Mac-OS) has to be installed on the machine.  
 
 **Help Message** of main.py:
 
@@ -30,4 +31,4 @@ options:
   -t, --transform_TS   Additionally transform Atlas tissue segementation and probability maps for WM, GM, CSF in to the patients anatomy
   -v, --verbose        Verbose ...
 ```
-For registering inside python script refer to the tutorial notebook
+For registering in python refer to the tutorial notebook
