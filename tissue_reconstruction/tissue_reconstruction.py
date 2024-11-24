@@ -36,8 +36,8 @@ atlas_fiber_tracts_DTI = ants.image_read(_atlas_fiber_DTI_path)
 
 def register_atlas(fixed_image, atlas):
 
-    #reg = ants.registration(fixed=fixed_image, moving=atlas, type_of_transform="antsRegistrationSyN[s,2]")
-    reg = ants.registration(fixed=fixed_image, moving=atlas, type_of_transform="SyN") # Faster Registartion for testing only
+    reg = ants.registration(fixed=fixed_image, moving=atlas, type_of_transform="antsRegistrationSyN[s,2]")
+    # reg = ants.registration(fixed=fixed_image, moving=atlas, type_of_transform="SyN") # Faster Registartion for testing only
             
     transformed_patient = reg['warpedmovout']
     transform_paths = reg['fwdtransforms']
