@@ -17,7 +17,7 @@ Reconstructing a **pre-tumor** brain state via atlas registration
 
 ### Note - Making the script executable
 
-The script main.py is marked as executable in git. If, on execution, you get 'permission denied' you have to add permission manually:
+The script main.py is marked as executable in git. If, on execution, you get 'permission denied' permission has to be given manually:
 ```
 chmod +x main.py
 ```
@@ -25,8 +25,18 @@ This goes for Unix systems. The Projects has not yet been tested on Windows.
 
 **Help Message**
 
-For more information about the script see the help message
+For more information read the help message:
+
 ```
-./main.py -h
-```
-For registering in python refer to the tutorial notebook
+usage: main.py [-h] [-d] [-t] [-v] patient output
+
+positional arguments:
+  patient              path to the MRI patient scan with a tumor. In nifti file format and registered into SRI space
+  output               Output Folder to which the results will be saved
+
+options:
+  -h, --help           show this help message and exit
+  -d, --transform_DTI  Additionally transform DTI Atlas fiber tractation in to the patients anatomy
+  -t, --transform_TS   Additionally transform Atlas tissue segementation and probability maps for WM, GM, CSF in to the patients anatomy
+  -v, --verbose        Verbose ...
+  ```
