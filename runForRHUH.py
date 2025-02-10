@@ -15,14 +15,16 @@ import time
 
 #%%
 # list  folders in dir
-bratsDatasetDir = "/mnt/8tb_slot8/jonas/datasets/brats/"
-outputFolder = "/mnt/8tb_slot8/jonas/workingDirDatasets/brats/registeredAtlasToFullBrats/"
+bratsDatasetDir = "/mnt/8tb_slot8/jonas/datasets/rhuh/rhuh-gbm_n40/"
+outputFolder = "/mnt/8tb_slot8/jonas/workingDirDatasets/rhuh/registeredAtlasToFullRhuh/"
 dirs = np.sort(os.listdir(bratsDatasetDir)).tolist()
 
 print(dirs)
 print(len(dirs))
 #%%%
 for dir in dirs:
+    if "." in dir:
+        continue
     print(dir)
     import time
 
@@ -34,3 +36,5 @@ for dir in dirs:
     tissue_reconstruction.save_results(results, resultsPath)
     print("done for: ", dir, " in ", time.time()-time0)
 
+
+# %%
